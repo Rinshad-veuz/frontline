@@ -1912,10 +1912,13 @@ td {
 	}
 
 	.contact-form-container .custom-form .form-control {
-
 		font-size: 14px;
 		padding-left: 0 !important;
-	}
+		padding-bottom: 0 !important;
+	  }
+	  .custom-form {
+		margin-bottom: 10px;
+	  }
 
 	.location-card .map {
 		width: 55%;
@@ -1941,6 +1944,10 @@ td {
 	.common-space {
 		margin-top: 50px;
 	}
+	.contact-social-icons a {
+		height: 35px;
+		width: 35px;
+	  }
 }
 
 @media screen and (max-width: 475px) {
@@ -2056,6 +2063,9 @@ td {
 	.location-card {
 		padding: 10px 10px 5px;
 	}
+	.cont-right-add-cntns h5 {
+		font-size: 14px;
+	  }
 }
 
 #top-btn {
