@@ -42,11 +42,11 @@ $('.product-carousel').owlCarousel({
 $('.client-carousel').owlCarousel({
   loop: true,
   margin: 15,
-  nav: false, // Disable navigation arrows
-  dots: false, // Enable dots
-  autoplay: true, // Enable autoplay
-  autoplayTimeout: 3000, // Set autoplay interval (in milliseconds)
-  autoplayHoverPause: true, // Pause autoplay on hover
+  nav: false, 
+  dots: false, 
+  autoplay: true, 
+  autoplayTimeout: 3000,
+  autoplayHoverPause: true, 
   responsive: {
       0: {
           items: 1
@@ -66,11 +66,11 @@ $('.client-carousel').owlCarousel({
 $('.testimonial-carousel').owlCarousel({
   loop: true,
   margin: 15,
-  nav: false, // Disable navigation arrows
-  dots: false, // Enable dots
-  autoplay: true, // Enable autoplay
-  autoplayTimeout: 3000, // Set autoplay interval (in milliseconds)
-  autoplayHoverPause: true, // Pause autoplay on hover
+  nav: false, 
+  dots: false, 
+  autoplay: true, 
+  autoplayTimeout: 3000, 
+  autoplayHoverPause: true, 
   responsive: {
       0: {
           items: 1
@@ -90,11 +90,11 @@ $('.testimonial-carousel').owlCarousel({
 $('.product-carousel2').owlCarousel({
   loop: true,
   margin: 15,
-  nav: false, // Disable navigation arrows
-  dots: true, // Enable dots
-  autoplay: true, // Enable autoplay
-  autoplayTimeout: 3000, // Set autoplay interval (in milliseconds)
-  autoplayHoverPause: true, // Pause autoplay on hover
+  nav: false, 
+  dots: true, 
+  autoplay: true, 
+  autoplayTimeout: 3000, 
+  autoplayHoverPause: true, 
   responsive: {
       0: {
           items: 1
@@ -110,14 +110,6 @@ $('.product-carousel2').owlCarousel({
       }
   }
 });
-
-
-
-
-
-
-
-
 
 
 

@@ -1,88 +1,981 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Table</title>
-    
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <style>
-        @media only screen and (max-width: 800px) {
-            #no-more-tables table, 
-            #no-more-tables thead, 
-            #no-more-tables tbody, 
-            #no-more-tables th, 
-            #no-more-tables td, 
-            #no-more-tables tr { 
-                display: block; 
-            }
-
-            #no-more-tables thead { 
-                display: none; 
-            }
-    
-            #no-more-tables tr { border: 1px solid #ccc; }
-    
-            #no-more-tables td { 
-                border: none;
-                border-bottom: 1px solid #eee; 
-                position: relative;
-                padding-left: 50%; 
-                white-space: normal;
-                text-align: left;
-            }
-    
-            #no-more-tables td::before { 
-                position: absolute;
-                top: 6px;
-                left: 6px;
-                width: 45%; 
-                padding-right: 10px; 
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                content: attr(data-label);
-            }
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll("#no-more-tables tbody tr").forEach(function(row) {
-                row.querySelectorAll("td").forEach(function(cell, index) {
-                    let th = document.querySelector("#no-more-tables thead th:nth-child(" + (index + 1) + ")");
-                    if (th) {
-                        cell.setAttribute("data-label", th.textContent.trim());
-                    }
-                });
-            });
-        });
-    </script>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/aos.css">
 </head>
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Fira+Sans:300,400';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+* {
+  box-sizing: border-box;
+}
+
+/* body {
+  background-color: #20b49c;
+  font-family: "Fira Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.875em;
+}
+body::after {
+  content: "";
+  position: absolute;
+  z-index: 99;
+  background-color: rgba(24, 137, 118, 0.8);
+  height: 100vh;
+  width: 100vw;
+  transition: 0.4s;
+  opacity: 0;
+  visibility: hidden;
+} */
+
+/* a {
+  text-decoration: none;
+} */
+.mobi-nav{
+    /* margin-top: 100px; */
+    display: none;
+}
+@media screen and (max-width:992px) {
+
+
+    .nav-bg {
+
+    display: none;
+  }
+
+    .mobi-nav{
+
+    display: block;
+}
+
+.nav-top {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 101;
+    padding: 10px 20px;
+    width: 100%;
+    /* height: 50px; */
+    background-color: #f6ad22;
+  }
+.nav-top .hamburger {
+  margin-left: auto;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-drill {
+  margin-top: 83px;
+  transform: translateX(100%);
+}
+
+.nav-is-toggled .nav-drill {
+  transform: translateX(0);
+}
+.nav-is-toggled::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-drill {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 60vh;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  transition: 0.45s;
+}
+.nav-items {
+  flex: 0 0 100%;
+  /* margin-top: 100px !important; */
+}
+.nav-item:not(:last-child) {
+  border-bottom: solid 1px #fff;
+}
+.nav-link {
+  display: block;
+  padding: 0.875em 1em;
+  background-color: #fff;
+  color: #f6ad22;
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+.nav-expand-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:auto;
+  transform: translateX(100%);
+  background-color: #fff;
+  transition: 0.3s;
+  visibility: hidden;
+}
+.nav-expand-content .nav-item:not(:last-child) {
+  border-bottom: solid 1px #f6ad22;
+}
+.nav-expand-content .nav-link {
+  background-color: #fff;
+}
+.nav-expand-content .nav-back-link {
+  display: flex;
+  align-items: center;
+  background-color: #f6ad22 !important;
+  color: #fff;
+}
+.nav-expand-content .nav-back-link::before {
+  content: "chevron_left";
+  margin-right: 0.5em;
+  font-family: "Material Icons";
+}
+.nav-expand-link {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-expand-link::after {
+  content: "chevron_right";
+  flex: 0 1 auto;
+  font-family: "Material Icons";
+}
+.nav-expand.active > .nav-expand-content {
+  transform: translateX(0);
+  visibility: visible;
+}
+.nav-expand .nav-expand-content {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-link {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content .nav-link {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content .nav-expand-content {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content .nav-expand-content .nav-link {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content .nav-expand-content .nav-expand-content {
+  background-color: #fff;
+}
+.nav-expand .nav-expand-content .nav-expand-content .nav-expand-content .nav-expand-content .nav-link {
+  background-color: #fff;
+}
+.mobi-nav .nav-top img{
+width: 130px;
+}
+}
+</style>
 <body>
 
-        <div class="table-responsive" id="no-more-tables">
-            <table id="mytable" class="table table-bordered dt-responsive mb-3 nowrap w-100">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Country Code</th>
-                        <th scope="col">Currency</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Created By</th>
-                        <th scope="col">Updated By</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="table-result">
-                 
-                </tbody>
-            </table>
+    <div class=" nav-container">
+        <div class="social-links">
+            <div class="container">
+                <ul>
+                    <li> <a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class=" container">
+            <div class="header-section">
+                <div class="logo">
+                    <a href=""><img src="img/logo.png" alt=""></a>
+                </div>
+
+
+                <div class="quick-contact">
+                    <div class="icon-text">
+                        <div class="icon"><img src="img/icon/icon2.svg" alt=""></div>
+                        <div class="icon-cont">
+                            <h6>Call Now:</h6>
+                            <a href="tel:0559789159"><h5>+966 55 978 9159</h5></a>
+                        </div>
+                    </div>
+                    <div class="icon-text">
+                        <div class="icon"><img src="img/icon/icon1.svg" alt=""></div>
+                        <div class="icon-cont">
+                            <h6>Email Now:</h6>
+                            <a href=""></a>
+                            <a href="mailto:insafusman@frontline.com.sa"><h5>insafusman@frontline.com.sa</h5></a>
+                        </div>
+                    </div>
+                    <div class="icon-text">
+                        <div class="icon"><img src="img/icon/icon3.svg" alt=""></div>
+                        <div class="icon-cont">
+                            <h6>Working Hours:</h6>
+                            <h5>8:30 am – 7 pm</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="nav-bg ">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg nav-custom">
+
+                    <a class="navbar-brand logo-sec" href="index.html">
+                        <img src="img/logo2.png" alt="Main Logo">
+                    </a>
+                    <a href="index.html"><img src="img/logo2.png" alt="Sticky Logo" class="sticky-logo"></a>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbar-content">
+                        <div class="hamburger-toggle">
+                            <div class="hamburger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-content">
+                        <ul class="navbar-nav  mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="about.html">About
+                                    Us</a>
+
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-mega position-static">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside">
+                                    Products
+                                </a>
+                                <div class="dropdown-menu mega-menu">
+                                    <div class="mega-content ">
+                                        <div class="">
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                    <!-- Tab Navigation -->
+                                                    <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link active" id="tab1-tab"
+                                                                data-bs-toggle="tab" data-bs-target="#tab1"
+                                                                type="button" role="tab" aria-controls="tab1"
+                                                                aria-selected="true">
+                                                                Fire Equipments
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab"
+                                                                data-bs-target="#tab2" type="button" role="tab"
+                                                                aria-controls="tab2" aria-selected="false">
+                                                                Safety Equipments
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab"
+                                                                data-bs-target="#tab3" type="button" role="tab"
+                                                                aria-controls="tab3" aria-selected="false">
+                                                                Road safe products
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="tab4-tab" data-bs-toggle="tab"
+                                                                data-bs-target="#tab4" type="button" role="tab"
+                                                                aria-controls="tab4" aria-selected="false">
+                                                                M2 Products
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- Tab Content -->
+                                                    <div class="tab-content py-4" id="productTabsContent">
+                                                        <div class="tab-pane fade show active mega-menu-tab" id="tab1"
+                                                            role="tabpanel" aria-labelledby="tab1-tab">
+                                                            <div class="mega-menu-sec d-flex">
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Ul Listed Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">Dry Chemical
+                                                                            Powder</a>
+
+                                                                    </div>
+                                                                    <h5>Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">Dry Chemical Powder</a>
+                                                                        <a href="product.html" class="">CO2</a>
+                                                                        <a href="product.html" class="">Foam</a>
+                                                                        <a href="product.html" class="">Automatic DCP</a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL
+                                                                            Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier
+                                                                            Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                    <h5>Fire Hoses Cabinet</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">Steel Cabinet</a>                                           
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Valves</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Gate Valve Flanged UL/FM</a>
+                                                                        <a href="#" class="">Check Valve Flanged FM</a>
+                                                                    </div>
+                                                                    <div class="mega-menu-cont">
+                                                                        <h5>Foam Concentrate</h5>
+                                                                        <div class="list-group">
+                                                                            <a href="#" class="">Aques Film Forming FOAM (AFFF)</a>
+                                                                            <a href="#" class="">FRP Mobile Foam Unit</a>
+                                                                      
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Sprinklers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Sprinklers UL Listed Pendant</a>
+                                                                        <a href="#" class="">Sprinklers UL Listed Upright   </a>
+                                                                        <a href="#" class="">Sprinklers UL Listed Sidewall</a>
+                                                                    </div>
+                                                                    <h5>Nozzles</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Superfire Junior UL Listed</a>
+                                                                        <a href="#" class="">PVC Hose Reel Nozzle</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade show  mega-menu-tab" id="tab2"
+                                                            role="tabpanel" aria-labelledby="tab2-tab">
+                                                            <div class="mega-menu-sec d-flex">
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Ul Listed Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Dry Chemical Powder</a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade show  mega-menu-tab" id="tab3"
+                                                            role="tabpanel" aria-labelledby="tab3-tab">
+                                                            <div class="mega-menu-sec d-flex">
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Ul Listed Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Dry Chemical Powder</a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade show  mega-menu-tab" id="tab4"
+                                                            role="tabpanel" aria-labelledby="tab4-tab">
+                                                            <div class="mega-menu-sec d-flex">
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Ul Listed Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">Dry Chemical Powder</a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link " href="contact.html" tabindex="-1">Contact Us</a>
+                            </li>
+                        </ul>
+                        <div class="brochure-btn">
+                            <img src="img/icon/brochure.svg" alt="">
+                            <div class="brochure-text">
+                                <h6>Download </h6>
+                                <h6>Brochure</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+<div class="mobi-nav">
+    <header class="nav-top">
+        <img src="img/logo2.png" alt="">
+        <span class="hamburger material-icons" id="ham">menu</span>
+    </header>
+    
+    <nav class="nav-drill">
+      <ul class="nav-items nav-level-1">
+        <li class="nav-item nav-expand">
+                <a class="nav-link nav-expand-link" href="#">
+                    Menu
+                </a>
+                <ul class="nav-items nav-expand-content">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Level 2
+                        </a>
+                    </li>
+                    <li class="nav-item nav-expand">
+                        <a class="nav-link nav-expand-link" href="#">
+                            Menu
+                        </a>
+                        <ul class="nav-items nav-expand-content">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Level 3
+                                </a>
+                            </li>
+                            <li class="nav-item nav-expand">
+                                <a class="nav-link nav-expand-link" href="#">
+                                    Menu
+                                </a>
+                                <ul class="nav-items nav-expand-content">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Level 4
+                                        </a>
+                                    </li>
+                                    <li class="nav-item nav-expand">
+                                        <a class="nav-link nav-expand-link" href="#">
+                                            Menu
+                                        </a>
+                                        <ul class="nav-items nav-expand-content">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">
+                                                    Level 5 Directory
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">
+                                                    Level 5 Contact
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">
+                                                    Level 5 Quick links
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">
+                                                    Level 5 Launchpad
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Level 4 Directory
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Level 4 Contact
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Level 4 Quick links
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            Level 4 Launchpad
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Level 3 Directory
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Level 3 Contact
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Level 3 Quick links
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Level 3 Launchpad
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Level 2 Directory
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Level 2 Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Level 2 Quick links
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Level 2 Launchpad
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Directory
+                </a>
+            </li>
+        <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Contact
+                </a>
+            </li>
+        <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Quick links
+                </a>
+            </li>
+        <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Launchpad
+                </a>
+            </li>
+      </ul>
+    </nav>
+</div>
+    <section>
+        <div class="banner-2">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <a href="index.html"><span>Home</span></a>
+                <a href=""><span>/</span></a>
+                <a href=""><span class="detail-page">Contact Us</span></a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+
+            <div class="contact-form-container">
+                <div class="row mb-5">
+                    <div class="col-lg-6" data-aos="fade-up">
+                        <h6 class="secondary-head">Get Started</h6>
+                        <h2 class="primary-head">Get in touch with us. We're here
+                            to assist you.</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-social-icons">
+                            <a href="https://www.facebook.com/login/"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/login/"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://x.com/i/flow/login"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row"data-aos="fade-up"  >
+                    <div class="col-lg-4">
+                        <div class="custom-form">
+                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="custom-form">
+                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="custom-form">
+                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                placeholder="Phone Number (optional)">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="custom-form mt-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"placeholder="Message"></textarea>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <a href=""><button class="primary-button mt-4">Submit</button></a>
+            </div>
         </div>
 
+
+
+        
+    </section>
+
+<section>
+    <div class="contact-bg">
+        <div class="container">
+            <div class="">
+                <div class="row lg-gx-5 justify-content-between"data-aos="fade-up">
+                    <div class="col-xl-6 col-md-12  " >
+                        <div class="cont-left-cntns">
+                            <h6 class="secondary-head">Let's talk with us</h6>
+                            <h3 class="primary-head text-dark">We are always happy to assist you</h3>
+                         
+
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 cont-right-add-cntns pt-4  ">
+                        <h4>Email Address</h4>
+                        <a href="mailto:help@info.com"><h6>help@info.com</h6></a>
+                        <span> Assistance hours:</span>
+                        <h5>Assistance hours: 
+                            Monday - Friday 6 am to 8 pm EST</h5>
+                    </div>
+                    <div class="col-xl-3 col-md-6 cont-right-add-cntns pt-4 " >
+                        <h4>Number</h4>
+                        <a href="tel:+966 56 816 7500"><h6>(808) 998-256369</h6></a>
+                        <span> Assistance hours:</span>
+                        <h5>Assistance hours: 
+                            Monday - Friday 6 am to 8 pm EST</h5>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="contact-page-map">
+    <div class="container">
+
+        <div class="row" >
+            <div class="col-lg-6 ">
+                
+                    <div class="location-card">
+                        <div class="card-sec">
+                        <div class="location-flag-sec">
+                            <img src="img/icon/f1.png" alt="">
+                            <div class="location-title">
+                                <h6>Head Office</h6>
+                                <h4>JEDDAH</h4>
+                            </div>
+                        </div>
+                        <div class="location-contact">
+                            <span><i class="fa-solid fa-phone"></i></span>
+                            <h6>(+966) 55 978 9159</h6>
+                        </div>
+                        <div class="location-contact">
+                            <span><i class="fa-solid fa-envelope"></i></span>
+                            <a href="mailto:insafusman@frontline.com.sa">
+                                <h6>insafusman@frontline.com.sa</h6>
+                            </a>
+                        </div>
+                        <div class="location-contact">
+                            <span><i class="fa-solid fa-location-dot"></i></span>
+                            <h6>Baladhiya Street (Jeddah)</h6>
+                        </div>
+                    </div>
+                        <div class="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.8999086224535!2d39.18283019999999!3d21.5507687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d16678c94fdb%3A0xa084bf0f63caf918!2sFRONTLINE%20SAFETY!5e0!3m2!1sen!2sin!4v1738136332129!5m2!1sen!2sin"
+                                width="100%" height="100%" style="border-radius:10px;"
+                                allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+            
+            </div>
+            <div class="col-lg-6 ">
+             
+                    <div class="location-card">
+                        <div class="card-sec">
+                            <div class="location-flag-sec">
+                                <img src="img/icon/f1.png" alt="">
+                                <div class="location-title">
+                                    <h6>Head Office</h6>
+                                    <h4>Dammam</h4>
+                                </div>
+                            </div>
+                            <div class="location-contact">
+                                <span><i class="fa-solid fa-phone"></i></span>
+                                <h6>(+966) 55 978 9159</h6>
+                            </div>
+                            <div class="location-contact">
+                                <span><i class="fa-solid fa-envelope"></i></span>
+                                <a href="mailto:insafusman@frontline.com.sa">
+                                    <h6>insafusman@frontline.com.sa</h6>
+                                </a>
+                            </div>
+                            <div class="location-contact">
+                                <span><i class="fa-solid fa-location-dot"></i></span>
+                                <h6>Al Amamrah (Dammam)</h6>
+                            </div>
+                        </div>
+                        <div class="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3572.3771585076056!2d50.10897807542327!3d26.44356897692997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDI2JzM2LjkiTiA1MMKwMDYnNDEuNiJF!5e0!3m2!1sen!2sin!4v1738136550228!5m2!1sen!2sin"
+                                width="100%" height="100%" style="border-radius:10px;"
+                                allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                
+
+            </div>
+
+        </div>
+       
+
+    </div></div>
+</section>
+
+    <section class="">
+        <div class="protection-container">
+            <div class="row gx-0">
+                <div class="col-lg-6">
+                    <div class="row gx-0">
+                        <div class="col-xl-5 d-none d-xl-block">
+                            <img src="img/abt3.jpg" alt="">
+                        </div>
+                        <div class="col-xl-7 col-lg-12">
+                            <div class="protection-sec">
+                                <h3 data-aos="fade-up">Your Protection Starts Here.</h3>
+                                <p data-aos="fade-up">Don’t wait for an emergency—prepare for it with Front Line’s advanced safety
+                                    solutions. </p>
+                                <a href="contact.html"><button data-aos="fade-up"  class="dark-button">Contact Us</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <img src="img/abt4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <a id="top-btn"></a>
+    <section>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="footer-content">
+                            <img src="img/logo.png" alt="">
+                            <p>At Front Line, we don’t just deliver safety; we redefine it. As a leading name in fire
+                                safety
+                                and industrial protection, we bring together state-of-the-art technology, </p>
+                            <div class="social-links-footer">
+
+                                <ul>
+                                    <li> <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></li>
+                                    <li><a href="https://x.com/?lang=en"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li><a href="https://www.instagram.com/accounts/login/?hl=en"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="https://in.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="page-links">
+                            <h3>Company</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html"> About Us</a></li>
+                                <li><a href="product.html">Products</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="page-links">
+                            <h3>Connect</h3>
+                            <ul>
+                                <li><a href="mailto:insafusman@frontline.com.sa">insafusman@frontline.com.sa</a></li>
+
+                                <li><a href="tel:+(966) 456-369 369">+(966) 55 978 9159</a></li>
+                                <li><a href="tel:+(966) 456-369 369">+(966) 12 261 0061</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="page-links">
+                            <h3>Join Newsletter</h3>
+                            <input type="email" class="form-control custom-form" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Type email here">
+                            <button class="primary-button">Subscribe</button>
+                        </div>
+                    </div>
+
+                    <div class="copy-right-sec">
+                        <div class="policy">
+                       <h5>Privacy Policy</h5>
+                       <h5>Terms & Conditions</h5>
+                        </div>
+                        <h6>@ Copyright Frontline 2025</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/aos.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/font-awsome.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        console.clear();
+
+const navExpand = [].slice.call(document.querySelectorAll('.nav-expand'));
+const backLink = `<li class="nav-item">
+	<a class="nav-link nav-back-link" href="javascript:;">
+		Back
+	</a>
+</li>`;
+
+navExpand.forEach(item => {
+  item.querySelector('.nav-expand-content').insertAdjacentHTML('afterbegin', backLink);
+  item.querySelector('.nav-link').addEventListener('click', () => item.classList.add('active'));
+  item.querySelector('.nav-back-link').addEventListener('click', () => item.classList.remove('active'));
+});
+
+
+// ---------------------------------------
+// not-so-important stuff starts here
+
+const ham = document.getElementById('ham');
+ham.addEventListener('click', function () {
+  document.body.classList.toggle('nav-is-toggled');
+});
+    </script>
 </body>
+
 </html>
