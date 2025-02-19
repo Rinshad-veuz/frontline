@@ -448,7 +448,7 @@ a {
 .mega-menu-cont .list-group{
 	min-height: 100px;
 	max-height: 295px;
-	overflow: scroll;
+	/* overflow: scroll; */
 }
 .mega-menu-cont {
 	min-width: 190px;

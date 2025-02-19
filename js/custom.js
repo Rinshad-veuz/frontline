@@ -211,6 +211,51 @@ gsap.registerPlugin(ScrollTrigger);
 };
 
 
+
+// nav dropdown
+
+document.querySelectorAll('.dropdown-submenu > a').forEach(subMenu => {
+  subMenu.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const submenu = this.nextElementSibling;
+
+      this.parentElement.parentElement.querySelectorAll('.dropdown-item').forEach(item => {
+          item.classList.remove('active');
+      });
+
+      if (submenu.classList.contains('show')) {
+          submenu.classList.remove('show');
+          this.classList.remove('active');
+      } else {
+          this.parentElement.parentElement.querySelectorAll('.dropdown-menu').forEach(menu => {
+              if (menu !== submenu) {
+                  menu.classList.remove('show');
+              }
+          });
+
+          submenu.classList.add('show');
+          this.classList.add('active'); 
+      }
+  });
+});
+
+document.addEventListener('click', function (e) {
+  document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+      if (!menu.parentElement.contains(e.target)) {
+          menu.classList.remove('show');
+      }
+  });
+
+  document.querySelectorAll('.dropdown-item.active').forEach(item => {
+      if (!item.parentElement.contains(e.target)) {
+          item.classList.remove('active');
+      }
+  });
+});
+
+
 // scroller-smooth
 const lenis = new Lenis()
 lenis.on('scroll', (e) => {
