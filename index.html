@@ -7,15 +7,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
 </head>
 <style>
 
 </style>
 
 <body>
+
+    <div class="preloaderBg" id="preloader" onload="preloader()">
+        <div class="preloader"><div class="preloader2"></div></div>
+        
+      </div>
     <div class=" nav-container">
         <div class="social-links">
             <div class="container">
@@ -1156,7 +1162,20 @@
         });
     </script> -->
     
-  
+    <script>
+        // Ensure preloader disappears only after the page is fully loaded
+        window.onload = function () {
+            let preloader = document.getElementById("preloader");
+            let content = document.getElementById("content");
+
+            preloader.style.opacity = "0"; // Smooth fade-out
+
+            setTimeout(() => {
+                preloader.style.display = "none"; // Hide preloader
+                content.style.display = "block"; // Show content
+            }, 500); // Delay to match fade-out effect
+        };
+    </script>
 
 
 <script>
