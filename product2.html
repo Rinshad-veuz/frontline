@@ -88,7 +88,51 @@
 
                             </li>
 
-                            <li class="nav-item dropdown dropdown-mega position-static">
+                            <!----------- mobile product nav ------------->
+                            <li class="nav-item dropdown product-custom-nav">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                  Products
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="padding-top: 0!important;">
+                                  <!-- Fire Equipment -->
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle submenu-in" href="#">Fire Equipment</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-submenu">
+                                                <a class="dropdown-item dropdown-toggle submenu-in-bottom" href="#">Dry Chemical Powder 1</a>
+                                                <ul class="dropdown-menu submenu-in-bottom-list">
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder</a></li>
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder2</a></li>
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="dropdown-item submenu-in-bottom" href="#">Dry Chemical Powder 2</a></li>
+                                            <li class="dropdown-submenu">
+                                                <a class="dropdown-item dropdown-toggle submenu-in-bottom" href="#">Dry Chemical Powder 3</a>
+                                                <ul class="dropdown-menu submenu-in-bottom-list">
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder</a></li>
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder2</a></li>
+                                                    <li><a class="dropdown-item" href="#">Dry Chemical Powder3</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- Safety Equipment -->
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle submenu-in" href="#">Safety Equipment</a>
+                                        <ul class="dropdown-menu"  style="padding-top: 0!important;">
+                                        <li><a class="dropdown-item submenu-in-bottom" href="#">Dry Chemical</a></li>
+                                        <li><a class="dropdown-item submenu-in-bottom" href="#">Dry Chemical</a></li>
+                                        <li><a class="dropdown-item submenu-in-bottom" href="#">Dry Chemical</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                              </li>
+                              <!------ END mobile product nav ------->
+                            
+                            
+                              <!----------- desktop product nav ------------->
+                              <li class="nav-item dropdown dropdown-mega position-static product-custom-full-nav">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside">
                                     Products
@@ -98,7 +142,180 @@
                                         <div class="">
                                             <div class="row">
                                                 <div class="col-12 ">
-                                                    <!-- Tab Navigation -->
+                                                    <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link active" id="tab1-tab"
+                                                                data-bs-toggle="tab" data-bs-target="#tab1"
+                                                                type="button" role="tab" aria-controls="tab1"
+                                                                aria-selected="true">
+                                                                Fire Equipments
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab"
+                                                                data-bs-target="#tab2" type="button" role="tab"
+                                                                aria-controls="tab2" aria-selected="false">
+                                                                Safety Equipments
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div class="tab-content py-4" id="productTabsContent">
+                                                        <div class="tab-pane fade show active mega-menu-tab" id="tab1"
+                                                            role="tabpanel" aria-labelledby="tab1-tab">
+                                                            <div class="mega-menu-sec">
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Ul Listed Extiguishers</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">Dry Chemical Powder</a>
+                                                                        <a href="product.html" class="">Dry Chemical Powder2</a>
+                                                                        <a href="product.html" class="">Dry Chemical Powder3</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product2.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product2.html" class="">Premier Extra</a>
+                                                                        <a href="product2.html" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product3.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product3.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                        <a href="product3.html" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="#" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="#" class="">Premier</a>
+                                                                        <a href="#" class="">Premier Extra</a>
+                                                                        <a href="#" class="">Double Jacket</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mega-menu-cont">
+                                                                    <h5>Fire Hoses</h5>
+                                                                    <div class="list-group">
+                                                                        <a href="product.html" class="">UL Listed/Pyroprotect</a>
+                                                                        <a href="product2.html" class="">Premier</a>
+                                                                        <a href="product3.html" class="">Premier Extra</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane fade show  mega-menu-tab" id="tab2"
+                                                            role="tabpanel" aria-labelledby="tab2-tab">
+                                                            <div class="mega-menu-sec">
+                                                                <div class="col-md-8 left-mega-menu-sec">
+                                                                    <div class="left-mega-menu-sec-cont">
+                                                                        <div class="mega-menu-cont">
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                        </div>
+                                                                        <div class="mega-menu-cont">
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                        </div>
+                                                                        <div class="mega-menu-cont">
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                        </div>
+                                                                        <div class="mega-menu-cont">
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                            <h6><a href="product.html" class="">Dry Chemical</a></h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 right-mega-menu-sec">
+                                                                    <div class="navright-img-out">
+                                                                        <img src="img/category_banner.jpg" class="img-fluid" alt="lifeline">
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!----------- END desktop product nav ------------->
+
+                            <!-- <li class="nav-item dropdown dropdown-mega position-static">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside">
+                                    Products
+                                </a>
+                                <div class="dropdown-menu mega-menu">
+                                    <div class="mega-content ">
+                                        <div class="">
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                   
                                                     <ul class="nav nav-tabs" id="productTabs" role="tablist">
                                                         <li class="nav-item" role="presentation">
                                                             <button class="nav-link active" id="tab1-tab"
@@ -131,7 +348,7 @@
                                                         </li>
                                                     </ul>
 
-                                                    <!-- Tab Content -->
+                                                    
                                                     <div class="tab-content py-4" id="productTabsContent">
                                                         <div class="tab-pane fade show active mega-menu-tab" id="tab1"
                                                             role="tabpanel" aria-labelledby="tab1-tab">
@@ -146,8 +363,8 @@
                                                                     <h5>Extiguishers</h5>
                                                                     <div class="list-group">
                                                                         <a href="product.html" class="">Dry Chemical Powder</a>
-                                                                        <a href="product.html" class="">CO2</a>
-                                                                        <a href="product.html" class="">Foam</a>
+                                                                        <a href="product2.html.html" class="">CO2</a>
+                                                                        <a href="product3.html.html" class="">Foam</a>
                                                                         <a href="product.html" class="">Automatic DCP</a>
 
                                                                     </div>
@@ -320,7 +537,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
 
                             <li class="nav-item">
                                 <a class="nav-link " href="contact.html" tabindex="-1">Contact Us</a>
@@ -740,13 +957,16 @@
         </div>
     </section>
     <script src="js/aos.js"></script>
-    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="js/gsap.min.js"></script>
+    <script src="js/lenis.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/font-awsome.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/custom.js"></script>
   
 </body>
 

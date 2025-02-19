@@ -11,8 +11,9 @@
 
 html {
 	overflow-x: hidden !important;
-	scroll-behavior: smooth;
 }
+
+
 
 body {
 	padding: 0px;
