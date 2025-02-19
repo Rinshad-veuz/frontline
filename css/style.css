@@ -2244,8 +2244,6 @@ td {
   background: url(../img/logo.png) no-repeat center;
     background-size: auto;
   background-size: 150px;
-  width: 300px;
-  height: 300px;
   display: flex;
   align-items: center;
 }
@@ -2269,3 +2267,32 @@ td {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+@media only screen and (max-width:1400px){
+	.preloader2 {
+		width: 180px;
+		height: 180px;
+	  }
+	  .preloader {
+		background-size: 130px;
+	  }
+}
+@media only screen and (max-width: 768px) {
+	.preloader2 {
+	  width: 160px;
+	  height: 160px;
+	}
+	.preloader {
+		background-size: 115px;
+	  }
+  }
+  @media only screen and (max-width: 425px) {
+	.preloader2 {
+	  width: 140px;
+	  height: 140px;
+	}
+	.preloader {
+		background-size: 100px;
+	  }
+  }
