@@ -52,6 +52,7 @@ $('.product-carousel').owlCarousel({
     }
 });
 $('.client-carousel').owlCarousel({
+
     loop: true,
     margin: 15,
     nav: false,
@@ -96,6 +97,51 @@ $('.testimonial-carousel').owlCarousel({
     }
 })
 
+//   loop: true,
+//   margin: 15,
+//   nav: false, 
+//   dots: false, 
+//   autoplay: true, 
+//   autoplayTimeout: 3000,
+//   autoplayHoverPause: true, 
+//   responsive: {
+//       0: {
+//           items: 1
+//       },
+//      375: {
+//           items: 2
+//       },
+//       600: {
+//           items: 3
+//       },
+//       1000: {
+//           items: 5
+//       }
+//   }
+// })
+
+$('.testimonial-carousel').owlCarousel({
+  loop: true,
+  margin: 15,
+  nav: false, 
+  dots: false, 
+  autoplay: true, 
+  autoplayTimeout: 3000, 
+  autoplayHoverPause: true, 
+  responsive: {
+      0: {
+          items: 1
+      },
+      992: {
+          items: 1
+      },
+      1000: {
+          items: 1.5
+      }
+  }
+
+})
+
 
 
 
@@ -121,10 +167,33 @@ $('.product-carousel2').owlCarousel({
             items: 5
         }
     }
-});
+})
+//   loop: true,
+//   margin: 15,
+//   nav: false, 
+//   dots: true, 
+//   autoplay: true, 
+//   autoplayTimeout: 3000, 
+//   autoplayHoverPause: true, 
+//   responsive: {
+//       0: {
+//           items: 1
+//       },
+//       475: {
+//           items: 2
+//       },
+//       768: {
+//           items: 3
+//       },
+//       1000: {
+//           items: 5
+//       }
+//   }
+// });
 
 
 // nav dropdown
+
 
 document.querySelectorAll('.dropdown-submenu > a').forEach(subMenu => {
     subMenu.addEventListener('click', function (e) {
@@ -166,6 +235,7 @@ document.addEventListener('click', function (e) {
         }
     });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
