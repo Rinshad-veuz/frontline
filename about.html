@@ -850,7 +850,7 @@
    
     <script>
         $(document).ready(function () {
-            let counted = false; // Prevent re-triggering
+            let counted = false; // Prevent multiple triggers
         
             function startCounter() {
                 let counterSection = $('#counter');
@@ -858,7 +858,7 @@
                 if (!counted && isElementInViewport(counterSection)) {
                     $('.count').each(function () {
                         let $this = $(this);
-                        let countTo = $this.attr('data-count');
+                        let countTo = parseInt($this.attr('data-count'), 10);
         
                         $({ countNum: 0 }).animate(
                             { countNum: countTo },
@@ -869,7 +869,7 @@
                                     $this.text(Math.floor(this.countNum));
                                 },
                                 complete: function () {
-                                    $this.text(this.countNum);
+                                    $this.text(countTo);
                                 }
                             }
                         );
@@ -881,13 +881,16 @@
         
             function isElementInViewport(el) {
                 let elementTop = el.offset().top;
-                let viewportBottom = $(window).scrollTop() + $(window).height();
-                return elementTop < viewportBottom; // Returns true if the element is visible
+                let elementBottom = elementTop + el.outerHeight();
+                let viewportTop = $(window).scrollTop();
+                let viewportBottom = viewportTop + $(window).height();
+        
+                return elementBottom > viewportTop && elementTop < viewportBottom;
             }
         
-            $(window).on("scroll", startCounter);
+            $(window).on("scroll resize", startCounter);
+            startCounter(); // Run on load in case the section is already in view
         });
-        
         </script>
 </body>
 </html>
